@@ -1,0 +1,21 @@
+name: Build and Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+      - run: npx vsce package
+      - uses: ncipollo/release-action@v1
+        with:
+          artifacts: "./*.vsix"
+          tag: ${{ github.ref_name }}
+          name: "Release ${{ github.ref_name }}"
