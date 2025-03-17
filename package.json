@@ -12,6 +12,10 @@
   "engines": { "vscode": "^1.80.0" },
   "browser": "./extension.js",
   "main": "./extension.js",
+  "activationEvents": [
+    "onCommand:extensionSync.save",
+    "onCommand:extensionSync.load"
+  ],
   "contributes": {
     "commands": [
       { "command": "extensionSync.save", "title": "Extension Sync: Save to User Settings JSON" },
