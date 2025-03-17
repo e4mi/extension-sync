@@ -1,0 +1,35 @@
+{
+  "name": "extension-sync",
+  "version": "0.1.0",
+  "publisher": "e4mi",
+  "author": "e4mi",
+  "displayName": "Extension Sync",
+  "description": "Save installed extensions in your User Settings JSON file",
+  "icon": "icon.png",
+  "keywords": ["dotfiles", "settings", "sync", "import", "export"],
+  "repository": "https://github.com/e4mi/extension-sync",
+  "categories": ["Other"],
+  "engines": { "vscode": "^1.80.0" },
+  "browser": "./extension.js",
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      { "command": "extensionSync.save", "title": "Extension Sync: Save to User Settings JSON" },
+      { "command": "extensionSync.load", "title": "Extension Sync: Load from User Settings JSON" }
+    ],
+    "configuration": {
+      "properties": {
+        "extensionSync": {
+          "type": "array",
+          "title": "Extension List",
+          "description": "Saved and loaded with Extension Sync commands",
+          "default": [],
+          "items": {
+            "type": "string",
+            "title": "Extension ID"
+          }
+        }
+      }
+    }
+  }
+}
